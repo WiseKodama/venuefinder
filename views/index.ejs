@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Venue Finder</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/public/style/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.0.6/fetch-jsonp.min.js"></script>
+  <script src="app/places.js"></script>
+</head>
+<body onload="localVenues('<%-userLoc%>','<%-user.id%>')">
+  <h1 class="mainTit"><p id="myIcon">&#xF0f5<br><br>&#xF000<br><br>&#xf0f4<br><br>&#xf290<br><br>&#xf1e5</p> Venue Finder</h1>
+  <h3>Find good places near you</h3>
+  <div class="container-fluid">
+    <form class="form-control">
+      <input type="text" id="searchLoc" placeholder="&#xF002;"/>
+      <select id="selOpt" name="venues">
+        <option value="food">Food &#xF0f5</option>
+        <option value="drinks">Drinks &#xF000</option>
+        <option value="coffee">Coffee &#xf0f4</option>
+        <option value="shops">Shopping &#xf290</option>
+        <option value="sights">Sights &#xf1e5</option>
+      </select>
+      <button type="button" class="ordinary" onclick="findRest()"> Go!</button>
+    </form>
+    <% if(!user) { %> <button onclick="logIn()" class="logIn fa fa-twitter"> Log In</button> <% } else {%>
+      <button onclick="location.href='/logout'" class="logIn fa fa-twitter"> <%=user.username%></button> <% } %>
+    <div id="links"></div>
+  </div>
+</body>
+</html>
